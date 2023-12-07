@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "node dist/main.js",
-    "build": "npm run clean",
+    "build": "npm run clean && tsc",
     "dev": "ts-node-dev --respawn --transpile-only src/main.ts"
   },
   "keywords": [],
