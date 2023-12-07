@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Target ECMAScript 2020
+    "module": "CommonJS", // Output module system: CommonJS
+    "lib": ["es2020"], // Specify the library files to include
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enable interoperability between CommonJS and ES Modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in file names
+    "moduleResolution": "node", // Use Node.js-style module resolution
+    "resolveJsonModule": true, // Include JSON files as modules
+    "declaration": true, // Generate corresponding .d.ts files
+    "outDir": "./dist", // Output directory for compiled files
+    "rootDir": "./src", // Root directory of input files
+    "sourceMap": true, // Generate source maps for better debugging
+    "removeComments": true // Remove comments from the compiled output
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,13 +1,4 @@
-"use strict"
-
-require("dotenv").config()
-const TelegramBot = require("node-telegram-bot-api")
-
-const BOT_TOKEN = process.env.BOT_API_TOKEN
-
-const bot = new TelegramBot(BOT_TOKEN, { polling: true })
-
-const validateJsonInput = (jsonInput) => {
+function validateJsonInput(jsonInput: any) {
   try {
     const parsedJson = JSON.parse(jsonInput)
     if (!Array.isArray(parsedJson)) {
@@ -55,33 +46,4 @@ const validateJsonInput = (jsonInput) => {
   }
 }
 
-bot.on("message", (msg) => {
-  const chatId = msg.chat.id
-
-  if (msg.text === "/start") {
-    bot.sendMessage(chatId, "Hello 👋")
-    return
-  }
-
-  // Input validation
-  const validated = validateJsonInput(msg.text)
-
-  if (!validated) {
-    bot.sendMessage(chatId, "Invalid message")
-    return
-  }
-
-  // Parse quizzes and create poll
-  const quizzes = JSON.parse(msg.text)
-
-  quizzes.forEach((quiz) => {
-    const question = quiz.question
-    const options = quiz.options.map((option) => option.value)
-    const answer = quiz.answer - 1
-
-    bot.sendPoll(chatId, question, options, {
-      type: "quiz",
-      correct_option_id: answer,
-    })
-  })
-})
+export default validateJsonInput
